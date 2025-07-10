@@ -54,7 +54,7 @@
             <div class="col-xl-7 d-none d-xl-block p-0">
                 <div class="w-100 h-100"
                     style="
-        background-image: url('{{ asset('cuba/assets/images/login/2.png') }}');
+        background-image: url('{{ asset('bootslander/assets/img/invoice.svg.svg') }}');
         background-size: cover;
         background-position: center;
         background-repeat: no-repeat;
@@ -66,7 +66,7 @@
                 <div class="login-card login-dark">
                     <div>
                         <div class="text-center">
-                            <img src="{{ asset('crafto/images/logo/logo-mbd.png') }}" alt="Logo BPKAD MBD"
+                            <img src="{{ asset('bootslander/assets/img/bkad-logo/logo-kabupaten-mbd.png') }}" alt="Logo BPKAD MBD"
                                 style="max-height: 60px;" class="mb-2">
                             <h4 class="fw-bold text-dark m-0">e-SPPM ( Sistem Pengarsipan Dokumen Elektronik <br>Surat
                                 Perintah Pembayaran dan Surat Perintah Membayar)</h4>

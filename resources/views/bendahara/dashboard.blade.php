@@ -11,9 +11,9 @@
                     </div>
                     <div class="col-sm-6">
                         <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="index.html">
+                            <li class="breadcrumb-item"><a href="{{ route('bendahara.dashboard') }}">
                                     <svg class="stroke-icon">
-                                        <use href="../assets/svg/icon-sprite.svg#stroke-home"></use>
+                                        <use href="{{ asset('cuba/assets/svg/icon-sprite.svg#stroke-home') }}"></use>
                                     </svg></a></li>
                             <li class="breadcrumb-item">Color version</li>
                             <li class="breadcrumb-item active">Layout light</li>

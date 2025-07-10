@@ -6,12 +6,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description"
-        content="Cuba admin is super flexible, powerful, clean &amp; modern responsive bootstrap 5 admin template with unlimited possibilities.">
+        content="Sistem Pengusulan dan Verifikasi Surat Perintah Pembayaran dan Surat Perintah Membayar Badan Pengelola Keuangan dan Aset Daerah Kabupaten Maluku Barat Daya">
     <meta name="keywords"
-        content="admin template, Cuba admin template, dashboard template, flat admin template, responsive admin template, web app">
+        content="Surat Perintah Membayar, Surat Perintah Pembayaran, Kabupaten MBD, BKAD MBD, Badan Pengelola Keuangan dan Aset Daerah">
     <meta name="author" content="pixelstrap">
-    <link rel="icon" href="{{ asset('cuba/assets/images/favicon.png') }}" type="image/x-icon">
-    <link rel="shortcut icon" href="{{ asset('cuba/assets/images/favicon.png') }}" type="image/x-icon">
+    <link rel="icon" href="{{ asset('bootslander/assets/img/bkad-logo/logo-kabupaten-mbd.png') }}" type="image/x-icon">
+    <link rel="shortcut icon" href="{{ asset('bootslander/assets/img/bkad-logo/logo-kabupaten-mbd.png') }}" type="image/x-icon">
     <title>@yield('title')</title>
     <!-- Google font-->
     <link href="https://fonts.googleapis.com/css?family=Rubik:400,400i,500,500i,700,700i&amp;display=swap"
@@ -19,7 +19,8 @@
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,500,500i,700,700i,900&amp;display=swap"
         rel="stylesheet">
     <!-- Font Awesome-->
-    <link rel="stylesheet" type="text/css" href="{{ asset('cuba/assets/css/fontawesome.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-..." crossorigin="anonymous" referrerpolicy="no-referrer" />
+
     <!-- ico-font-->
     <link rel="stylesheet" type="text/css" href="{{ asset('cuba/assets/css/vendors/icofont.css') }}">
     <!-- Themify icon-->
@@ -41,6 +42,12 @@
     <link id="color" rel="stylesheet" href="{{ asset('cuba/assets/css/color-1.css') }}" media="screen">
     <!-- Responsive css-->
     <link rel="stylesheet" type="text/css" href="{{ asset('cuba/assets/css/responsive.css') }}">
+
+    <!-- jQuery (required by DataTables) -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+
+    <!-- DataTables CSS -->
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">
     @yield('script')
 </head>
 
@@ -99,8 +106,8 @@
                         <li class="profile-nav onhover-dropdown pe-0 py-0">
                             <div class="d-flex profile-media"><img class="b-r-10"
                                     src="{{ asset('cuba/assets/images/dashboard/profile.png') }}" alt="">
-                                <div class="flex-grow-1"><span>Emay Walter</span>
-                                    <p class="mb-0">Admin <i class="middle fa-solid fa-angle-down"></i></p>
+                                <div class="flex-grow-1"><span>{{ Auth::user()->name }}</span>
+                                    <p class="mb-0">{{ Auth::user()->role }} <i class="middle fa-solid fa-angle-down"></i></p>
                                 </div>
                             </div>
                             <ul class="profile-dropdown onhover-show-div">
@@ -170,6 +177,14 @@
     <script src="{{ asset('cuba/assets/js/script.js') }}"></script>
     <script src="{{ asset('cuba/assets/js/script1.js') }}"></script>
     <script src="{{ asset('cuba/assets/js/theme-customizer/customizer.js') }}"></script>
+
+    {{-- Sweet Alert --}}
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <!-- DataTables JS -->
+    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+
+   
 
     @stack('script')
 </body>
