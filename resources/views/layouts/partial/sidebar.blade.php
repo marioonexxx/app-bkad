@@ -281,7 +281,7 @@
                                                     <use
                                                         href="{{ asset('cuba/assets/svg/icon-sprite.svg#fill-sitemap') }}">
                                                     </use>
-                                                </svg><span>Pengajuan SP2D</span></a>
+                                                </svg><span>Upload Resume</span></a>
                                             <ul class="sidebar-submenu">
                                                 <li>
                                                     <a href="#">UP (Uang Persediaan)

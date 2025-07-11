@@ -54,6 +54,7 @@
                                         <tr>
                                             <th>#</th>
                                             <th>Status</th>
+                                            <th>Print</th>
                                             <th>No SPM</th>
                                             <th>Tgl SPM</th>
                                             <th>File SPM</th>
@@ -107,9 +108,14 @@
                                                         @default
                                                             <span class="badge bg-secondary">Belum Diverifikasi</span>
                                                     @endswitch
+                                                </td>                                               
+                                                <td>
+                                                     {{-- Tombol Print Resume --}}
+                                                        <button type="button" class="btn btn-sm btn-primary">
+                                                            <i class="fa-solid fa-print"></i>
+                                                        </button>
                                                 </td>
-
-                                                <td>{{ $item->spm_nomor }}</td>
+                                                <td>{{ $item->spm_nomor }}</td>                                                
                                                 <td>{{ $item->spm_tgl }}</td>
                                                 <td>
                                                     @if ($item->file_spm)

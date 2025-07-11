@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('email')->unique()->nullable();
             $table->string('phone')->nullable();
             $table->string('nama_jabatan')->nullable();
-           $table->string('role')->nullable()->comment('1. Admin | 2. Kabankeu | 3. Kabid Perben | 4. Verifikator BKAD | 5. PPK OPD | 6. Bendahara OPD');
+            $table->string('role')->nullable()->comment('1. Admin | 2. Kabankeu | 3. Kabid Perben | 4. Verifikator BKAD | 5. PPK OPD | 6. Bendahara OPD');
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();

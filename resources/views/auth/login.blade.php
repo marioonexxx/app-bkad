@@ -66,8 +66,8 @@
                 <div class="login-card login-dark">
                     <div>
                         <div class="text-center">
-                            <img src="{{ asset('bootslander/assets/img/bkad-logo/logo-kabupaten-mbd.png') }}" alt="Logo BPKAD MBD"
-                                style="max-height: 60px;" class="mb-2">
+                            <img src="{{ asset('bootslander/assets/img/bkad-logo/logo-kabupaten-mbd.png') }}"
+                                alt="Logo BPKAD MBD" style="max-height: 60px;" class="mb-2">
                             <h4 class="fw-bold text-dark m-0">e-SPPM ( Sistem Pengarsipan Dokumen Elektronik <br>Surat
                                 Perintah Pembayaran dan Surat Perintah Membayar)</h4>
                             <span class="text-secondary">Badan Pengelola Keuangan dan Aset Daerah <br> Kabupaten Maluku
@@ -81,24 +81,33 @@
                                 <h4>Silahkan login</h4>
                                 <p>Masukan email dan password anda</p>
                                 <div class="form-group"><label class="col-form-label">Email Address</label><input
-                                        class="form-control" type="email"  name="email" required="" placeholder="test@gmail.com">
+                                        class="form-control" type="email" name="email" required=""
+                                        placeholder="test@gmail.com">
                                 </div>
                                 <div class="form-group"><label class="col-form-label">Password</label>
                                     <div class="form-input position-relative"><input class="form-control"
-                                            type="password" name="password" required=""
-                                            placeholder="*********" >
+                                            type="password" name="password" required="" placeholder="*********">
                                         <div class="show-hide"><span class="show"> </span></div>
                                     </div>
                                 </div>
-                                <div class="form-group mb-0">
-                                    <div class="form-check"><input class="checkbox-primary form-check-input"
-                                            id="checkbox1" type="checkbox"><label class="text-muted form-check-label"
-                                            for="checkbox1">Remember password</label></div><button
-                                        class="btn btn-primary btn-block w-100 mt-3" type="submit">Sign in</button>
+                                <div class="form-check mb-3">
+                                    <input class="checkbox-primary form-check-input" id="checkbox1" type="checkbox">
+                                    <label class="text-muted form-check-label" for="checkbox1">Ingat Password</label>
                                 </div>
 
-                                <p class="mt-4 mb-0 text-center">Jika OPD Anda belum terdaftar Hubungi Admin BKAD<a class="ms-2"
-                                        href="#">Kontak WA</a></p>
+                                <div class="d-flex justify-content-between gap-2">
+                                    <a href="{{ url('/') }}" class="btn btn-primary w-50">
+                                        <i class="fa-solid fa-arrow-left me-1"></i>Back
+                                    </a>
+
+                                    <button class="btn btn-primary w-50" type="submit">
+                                        <i class="fa-solid fa-right-to-bracket me-1"></i> Sign In
+                                    </button>
+                                </div>
+
+
+                                <p class="mt-4 mb-0 text-center">Jika OPD Anda belum terdaftar Hubungi Admin BKAD<a
+                                        class="ms-2" href="#">Kontak WA</a></p>
                             </form>
                         </div>
                     </div>

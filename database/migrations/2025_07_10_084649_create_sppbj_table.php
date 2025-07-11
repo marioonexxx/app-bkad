@@ -28,6 +28,9 @@ return new class extends Migration
             $table->text('keterangan')->nullable();
             $table->integer('waktu_pelaksanaan')->nullable(); // dalam hari, asumsi
             $table->date('tgl_penyelesaian')->nullable(); 
+            //SPM
+            $table->string('spm_nomor')->nullable();
+            $table->date('spm_tgl')->nullable();
             // File uploads
             $table->string('file_kontrak')->nullable();
             $table->string('file_spmk')->nullable();
@@ -36,10 +39,12 @@ return new class extends Migration
             $table->string('file_ba_pemeriksaan')->nullable();
             $table->string('file_lap_kemajuan')->nullable();
             $table->string('file_dokumentasi')->nullable();
+            $table->string('file_spm')->nullable();
             $table->string('status')->nullable(); // status proses
-            $table->string('notes')->nullable(); // untuk catatan revisi
-
+            $table->string('notes')->nullable(); // untuk catatan revisi            
             $table->timestamps();
+            $table->foreignId('opd_id')->nullable()->constrained('opd')->onDelete('set null');
+
         });
     }
 

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Sppbj;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 
 class SppBjController extends Controller
@@ -11,7 +12,7 @@ class SppBjController extends Controller
     public function index()
     {
         $data = Sppbj::all();
-        return view('spp-bj.index', compact('data'));
+        return view('spp-bj.index-bendahara', compact('data'));
     }
     public function index_ppk()
     {
@@ -49,9 +50,8 @@ class SppBjController extends Controller
             'file_bap' => 'nullable|file|mimes:pdf|max:5120',
             'file_ba_pemeriksaan' => 'nullable|file|mimes:pdf|max:5120',
             'file_lap_kemajuan' => 'nullable|file|mimes:pdf|max:5120',
-            'file_dokumentasi' => 'nullable|file|mimes:pdf|max:5120',
+            'file_dokumentasi' => 'nullable|file|mimes:pdf|max:5120',         
 
-            'status' => '1',
         ]);
 
         // Handle upload file satu-satu
@@ -77,6 +77,9 @@ class SppBjController extends Controller
             $validated['file_dokumentasi'] = $request->file('file_dokumentasi')->store('sppbj', 'public');
         }
 
+        // Simpan opd_id dari user yang login
+        $validated['opd_id'] = Auth::user()->opd_id;
+        $validated['status'] = 1;
         // Simpan ke DB
         Sppbj::create($validated);
         return redirect()->back()->with('success', 'Data berhasil ditambahkan.');

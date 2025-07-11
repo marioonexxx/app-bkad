@@ -36,5 +36,11 @@ class Sppbj extends Model
         'spm_nomor',
         'spm_tgl',
         'file_spm',
+        'opd_id',
     ];
+
+    public function opd()
+    {
+        return $this->belongsTo(Opd::class);
+    }
 }

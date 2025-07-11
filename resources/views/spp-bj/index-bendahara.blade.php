@@ -57,7 +57,7 @@
                                     <thead>
                                         <tr>
                                             <th>#</th>
-                                            <th>Status</th>
+                                            <th>Status</th>                                            
                                             <th>No SPP</th>
                                             <th>No Kontrak</th>
                                             <th>Tgl Kontrak</th>
@@ -66,19 +66,19 @@
                                             <th>No SPPBJ</th>
                                             <th>Tgl SPPBJ</th>
                                             <th>Nama Perusahaan</th>
-                                            <th>Alamat</th>
-                                            <th>Nama Bank</th>
+                                            {{-- <th>Alamat</th> --}}
+                                            {{-- <th>Nama Bank</th> --}}
                                             <th>Nilai Kontrak</th>
-                                            <th>Keterangan</th>
-                                            <th>Waktu Pelaksanaan</th>
+                                            {{-- <th>Keterangan</th> --}}
+                                            {{-- <th>Waktu Pelaksanaan</th> --}}
                                             <th>Tanggal Penyelesaian</th>
-                                            <th>File Kontrak</th>
+                                            {{-- <th>File Kontrak</th>
                                             <th>File SPMK</th>
                                             <th>File SPPBJ</th>
                                             <th>File BAP</th>
                                             <th>File BA-Pemeriksaan</th>
                                             <th>File Lap. Kemajuan</th>
-                                            <th>File Dokumentasi</th>
+                                            <th>File Dokumentasi</th> --}}
                                             <th>Action</th>
                                         </tr>
                                     </thead>
@@ -113,22 +113,29 @@
                                                             <span class="badge bg-secondary">Belum Diverifikasi</span>
                                                     @endswitch
                                                 </td>
+                                                
                                                 <td>{{ $item->nomor }}</td>
                                                 <td>{{ $item->kontrak_nomor }}</td>
-                                                <td>{{ $item->kontrak_tgl }}</td>
+                                                <td>{{ \Carbon\Carbon::parse($item->kontrak_tgl)->translatedFormat('d F Y') }}
+                                                </td>
                                                 <td>{{ $item->spmk_nomor }}</td>
-                                                <td>{{ $item->spmk_tgl }}</td>
+                                                <td>{{ \Carbon\Carbon::parse($item->spmk_tgl)->translatedFormat('d F Y') }}
+                                                </td>
                                                 <td>{{ $item->sppbj_nomor }}</td>
-                                                <td>{{ $item->sppbj_tgl }}</td>
+                                                <td>{{ \Carbon\Carbon::parse($item->sppbj_tgl)->translatedFormat('d F Y') }}
+                                                </td>
                                                 <td>{{ $item->perusahaan_nama }}</td>
-                                                <td>{{ $item->perusahaan_alamat }}</td>
-                                                <td>{{ $item->perusahaan_bank }}</td>
-                                                <td>{{ $item->kontrak_nilai }}</td>
-                                                <td>{{ $item->keterangan }}</td>
-                                                <td>{{ $item->waktu_pelaksanaan }}</td>
-                                                <td>{{ $item->tgl_penyelesaian }}</td>
+                                                {{-- <td>{{ $item->perusahaan_alamat }}</td> --}}
+                                                {{-- <td>{{ $item->perusahaan_bank }}</td> --}}
+                                                <td>Rp{{ number_format($item->kontrak_nilai, 0, ',', '.') }}</td>
+
+                                                {{-- <td>{{ $item->keterangan }}</td> --}}
+                                                {{-- <td>{{ $item->waktu_pelaksanaan }}</td> --}}
+                                                <td>{{ \Carbon\Carbon::parse($item->tgl_penyelesaian)->translatedFormat('d F Y') }}
+                                                </td>
+
                                                 {{-- File Kontrak --}}
-                                                <td>
+                                                {{-- <td>
                                                     @if ($item->file_kontrak)
                                                         <a href="{{ asset('storage/' . $item->file_kontrak) }}"
                                                             target="_blank">
@@ -137,9 +144,9 @@
                                                     @else
                                                         <span class="text-muted">-</span>
                                                     @endif
-                                                </td>
+                                                </td> --}}
                                                 <!-- File SPMK -->
-                                                <td>
+                                                {{-- <td>
                                                     @if ($item->file_spmk)
                                                         <a href="{{ asset('storage/' . $item->file_spmk) }}"
                                                             target="_blank">
@@ -148,10 +155,10 @@
                                                     @else
                                                         <span class="text-muted">-</span>
                                                     @endif
-                                                </td>
+                                                </td> --}}
 
                                                 <!-- File SPPBJ -->
-                                                <td>
+                                                {{-- <td>
                                                     @if ($item->file_sppbj)
                                                         <a href="{{ asset('storage/' . $item->file_sppbj) }}"
                                                             target="_blank">
@@ -160,10 +167,10 @@
                                                     @else
                                                         <span class="text-muted">-</span>
                                                     @endif
-                                                </td>
+                                                </td> --}}
 
                                                 <!-- File BAP -->
-                                                <td>
+                                                {{-- <td>
                                                     @if ($item->file_bap)
                                                         <a href="{{ asset('storage/' . $item->file_bap) }}"
                                                             target="_blank">
@@ -172,10 +179,10 @@
                                                     @else
                                                         <span class="text-muted">-</span>
                                                     @endif
-                                                </td>
+                                                </td> --}}
 
                                                 <!-- File BA Pemeriksaan -->
-                                                <td>
+                                                {{-- <td>
                                                     @if ($item->file_ba_pemeriksaan)
                                                         <a href="{{ asset('storage/' . $item->file_ba_pemeriksaan) }}"
                                                             target="_blank">
@@ -184,10 +191,10 @@
                                                     @else
                                                         <span class="text-muted">-</span>
                                                     @endif
-                                                </td>
+                                                </td> --}}
 
                                                 <!-- File Laporan Kemajuan -->
-                                                <td>
+                                                {{-- <td>
                                                     @if ($item->file_lap_kemajuan)
                                                         <a href="{{ asset('storage/' . $item->file_lap_kemajuan) }}"
                                                             target="_blank">
@@ -196,10 +203,10 @@
                                                     @else
                                                         <span class="text-muted">-</span>
                                                     @endif
-                                                </td>
+                                                </td> --}}
 
                                                 <!-- File Dokumentasi -->
-                                                <td>
+                                                {{-- <td>
                                                     @if ($item->file_dokumentasi)
                                                         <a href="{{ asset('storage/' . $item->file_dokumentasi) }}"
                                                             target="_blank">
@@ -208,15 +215,25 @@
                                                     @else
                                                         <span class="text-muted">-</span>
                                                     @endif
-                                                </td>
+                                                </td> --}}
                                                 <td>
                                                     <div class="d-flex gap-2">
+                                                        
+                                                        {{-- Tombol Info --}}
+                                                        <button type="button" class="btn btn-sm btn-success"
+                                                            data-bs-toggle="modal"
+                                                            data-bs-target="#infoModal{{ $item->id }}">
+                                                            <i class="fa-solid fa-circle-info"></i>
+                                                        </button>
+                                                        {{-- Tombol Edit --}}
                                                         <button type="button" class="btn btn-sm btn-warning"
                                                             data-bs-toggle="modal"
                                                             data-bs-target="#editModal{{ $item->id }}">
                                                             <i class="fa-regular fa-pen-to-square"></i>
                                                         </button>
 
+
+                                                        {{-- Tombol Hapus --}}
                                                         <form action="{{ route('spp-bj.destroy', $item->id) }}"
                                                             method="POST" class="form-delete d-inline"
                                                             data-id="{{ $item->id }}">
@@ -226,8 +243,8 @@
                                                                 <i class="fa-solid fa-trash-can"></i>
                                                             </button>
                                                         </form>
-
                                                     </div>
+
                                                 </td>
 
 
@@ -243,6 +260,114 @@
                                 <button class="code-box-copy__btn btn-clipboard" data-clipboard-target="#example-head"
                                     title="Copy"><i class="icofont icofont-copy-alt"></i></button>
 
+                            </div>
+                        </div>
+                        <!-- Modal Info -->
+                        <div class="modal fade" id="infoModal{{ $item->id }}" tabindex="-1"
+                            aria-labelledby="infoModalLabel{{ $item->id }}" aria-hidden="true">
+                            <div class="modal-dialog modal-xl modal-dialog-scrollable">
+                                <div class="modal-content">
+                                    <div class="modal-header text-dark">
+                                        <h5 class="modal-title" id="infoModalLabel{{ $item->id }}">Detail Data</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                            aria-label="Tutup"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="row g-3">
+
+                                            <div class="col-md-6"><strong>Status:</strong><br>
+                                                @switch($item->status)
+                                                    @case(1)
+                                                        Verifikasi PPK
+                                                    @break
+
+                                                    @case(2)
+                                                        Verifikasi Verifikator BKAD
+                                                    @break
+
+                                                    @case(3)
+                                                        Verifikasi Kuasa BUD
+                                                    @break
+
+                                                    @case(4)
+                                                        SPD2 Terbit
+                                                    @break
+
+                                                    @case(5)
+                                                        Revisi Usulan
+                                                    @break
+
+                                                    @default
+                                                        Belum Diverifikasi
+                                                @endswitch
+                                            </div>
+
+                                            <div class="col-md-6"><strong>No SPP:</strong><br>{{ $item->nomor }}</div>
+                                            <div class="col-md-6"><strong>No
+                                                    Kontrak:</strong><br>{{ $item->kontrak_nomor }}</div>
+                                            <div class="col-md-6"><strong>Tgl
+                                                    Kontrak:</strong><br>{{ \Carbon\Carbon::parse($item->kontrak_tgl)->translatedFormat('d F Y') }}
+                                            </div>
+                                            <div class="col-md-6"><strong>No SPMK:</strong><br>{{ $item->spmk_nomor }}
+                                            </div>
+                                            <div class="col-md-6"><strong>Tgl
+                                                    SPMK:</strong><br>{{ \Carbon\Carbon::parse($item->spmk_tgl)->translatedFormat('d F Y') }}
+                                            </div>
+                                            <div class="col-md-6"><strong>No SPPBJ:</strong><br>{{ $item->sppbj_nomor }}
+                                            </div>
+                                            <div class="col-md-6"><strong>Tgl
+                                                    SPPBJ:</strong><br>{{ \Carbon\Carbon::parse($item->sppbj_tgl)->translatedFormat('d F Y') }}
+                                            </div>
+                                            <div class="col-md-6"><strong>Nama
+                                                    Perusahaan:</strong><br>{{ $item->perusahaan_nama }}</div>
+                                            <div class="col-md-6">
+                                                <strong>Alamat:</strong><br>{{ $item->perusahaan_alamat }}</div>
+                                            <div class="col-md-6"><strong>Nama
+                                                    Bank:</strong><br>{{ $item->perusahaan_bank }}</div>
+                                            <div class="col-md-6"><strong>Nilai
+                                                    Kontrak:</strong><br>Rp{{ number_format($item->kontrak_nilai, 0, ',', '.') }}
+                                            </div>
+                                            <div class="col-md-6"><strong>Keterangan:</strong><br>{{ $item->keterangan }}
+                                            </div>
+                                            <div class="col-md-6"><strong>Waktu
+                                                    Pelaksanaan:</strong><br>{{ $item->waktu_pelaksanaan }} hari</div>
+                                            <div class="col-md-6"><strong>Tgl
+                                                    Penyelesaian:</strong><br>{{ \Carbon\Carbon::parse($item->tgl_penyelesaian)->translatedFormat('d F Y') }}
+                                            </div>
+
+                                            {{-- File-file --}}
+                                            @php
+                                                $files = [
+                                                    'file_kontrak' => 'File Kontrak',
+                                                    'file_spmk' => 'File SPMK',
+                                                    'file_sppbj' => 'File SPPBJ',
+                                                    'file_bap' => 'File BAP',
+                                                    'file_ba_pemeriksaan' => 'File BA Pemeriksaan',
+                                                    'file_lap_kemajuan' => 'File Laporan Kemajuan',
+                                                    'file_dokumentasi' => 'File Dokumentasi',
+                                                ];
+                                            @endphp
+
+                                            @foreach ($files as $key => $label)
+                                                <div class="col-md-6">
+                                                    <strong>{{ $label }}:</strong><br>
+                                                    @if ($item->$key)
+                                                        <a href="{{ asset('storage/' . $item->$key) }}" target="_blank">
+                                                            <i class="fa-solid fa-file-pdf text-danger"></i> Lihat Dokumen
+                                                        </a>
+                                                    @else
+                                                        <span class="text-muted">Tidak ada</span>
+                                                    @endif
+                                                </div>
+                                            @endforeach
+
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary"
+                                            data-bs-dismiss="modal">Tutup</button>
+                                    </div>
+                                </div>
                             </div>
                         </div>
 
