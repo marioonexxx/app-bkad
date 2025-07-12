@@ -44,14 +44,15 @@
       <a href="index.html" class="logo d-flex align-items-center">
         <!-- Uncomment the line below if you also wish to use an image logo -->
         <img src="{{ asset('bootslander/assets/img/bkad-logo/logo-kabupaten-mbd.png') }}" alt="Logo">
-        <h1 class="sitename">BKAD MBD</h1>
+        <h1 class="sitename">SIKUPAS</h1>
       </a>
 
       <nav id="navmenu" class="navmenu">
         <ul>
           <li><a href="#hero" class="active">Home</a></li>
-          <li><a href="#about">Panduan</a></li>          
-          <li class="dropdown"><a href="#"><span>Dropdown</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
+          <li><a href="#about">Panduan</a></li> 
+          <li><a href="#about">Lacak SP2D</a></li>          
+          {{-- <li class="dropdown"><a href="#"><span>Dropdown</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
             <ul>
               <li><a href="#">Dropdown 1</a></li>
               <li class="dropdown"><a href="#"><span>Deep Dropdown</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
@@ -67,7 +68,7 @@
               <li><a href="#">Dropdown 3</a></li>
               <li><a href="#">Dropdown 4</a></li>
             </ul>
-          </li>
+          </li> --}}
           <li><a href="#contact">Hubungi Kami</a></li>
           <li><a href="{{ route('login') }}">Login</a></li>
         </ul>
@@ -90,8 +91,8 @@
           </div>
 
           <div class="col-lg-6  d-flex flex-column justify-content-center" data-aos="fade-in">
-            <h1>Pengusulan dan Verifikasi <span>SPP dan SPM</span></h1>
-            <p>Efektivitas dan Efisiensi Pengusulan dan Verifikasi SPP dan SPM Organisasi Perangkat Daerah (OPD) di Kabupaten Maluku Barat Daya</p>
+            <h2>SISTEM INFORMASI DOKUMEN <span>PENATAUSAHAAN SKPD</span></h2>
+            <h1>(SIKUPAS)</h1>
             <div class="d-flex">
               <a href="#about" class="btn-get-started">Login OPD</a>
               <a href="https://www.youtube.com/watch?v=Y7f98aduVJ8" class="glightbox btn-watch-video d-flex align-items-center"><i class="bi bi-play-circle"></i><span>Panduan Pengusulan</span></a>

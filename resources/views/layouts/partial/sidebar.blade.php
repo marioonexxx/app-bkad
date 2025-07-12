@@ -71,6 +71,36 @@
                                                 </svg><span>Usulan</span></a>
 
                                         </li>
+                                        <li class="sidebar-list"><i class="fa-solid fa-thumbtack"></i>
+                                            <a class="sidebar-link sidebar-title link-nav"
+                                                href="{{ route('dashboard') }}">
+                                                <svg class="stroke-icon">
+                                                    <use
+                                                        href="{{ asset('cuba/assets/svg/icon-sprite.svg#stroke-knowledgebase') }}">
+                                                    </use>
+                                                </svg>
+                                                <svg class="fill-icon">
+                                                    <use
+                                                        href="{{ asset('cuba/assets/svg/icon-sprite.svg#fill-knowledgebase') }}">
+                                                    </use>
+                                                </svg><span>Manajemen OPD</span>
+                                            </a>
+                                        </li>
+                                        <li class="sidebar-list"><i class="fa-solid fa-thumbtack"></i>
+                                            <a class="sidebar-link sidebar-title link-nav"
+                                                href="{{ route('manajemen_user.index') }}">
+                                                <svg class="stroke-icon">
+                                                    <use
+                                                        href="{{ asset('cuba/assets/svg/icon-sprite.svg#stroke-user') }}">
+                                                    </use>
+                                                </svg>
+                                                <svg class="fill-icon">
+                                                    <use
+                                                        href="{{ asset('cuba/assets/svg/icon-sprite.svg#fill-user') }}">
+                                                    </use>
+                                                </svg><span>Akun Pengguna</span>
+                                            </a>
+                                        </li>
 
 
 
@@ -114,14 +144,14 @@
                                                 class="sidebar-link sidebar-title" href="#">
                                                 <svg class="stroke-icon">
                                                     <use
-                                                        href="{{ asset('cuba/assets/svg/icon-sprite.svg#stroke-sitemap') }}">
+                                                        href="{{ asset('cuba/assets/svg/icon-sprite.svg#stroke-to-do') }}">
                                                     </use>
                                                 </svg>
                                                 <svg class="fill-icon">
                                                     <use
-                                                        href="{{ asset('cuba/assets/svg/icon-sprite.svg#fill-sitemap') }}">
+                                                        href="{{ asset('cuba/assets/svg/icon-sprite.svg#fill-to-do') }}">
                                                     </use>
-                                                </svg><span>Create SPP</span></a>
+                                                </svg><span>Input Data SPP</span></a>
                                             <ul class="sidebar-submenu">
                                                 <li>
                                                     <a href="{{ route('spp-up.index') }}">UP (Uang Persediaan)
@@ -150,46 +180,22 @@
 
                                             </ul>
                                         </li>
-                                         <li class="sidebar-list"><i class="fa-solid fa-thumbtack"></i><a
-                                                class="sidebar-link sidebar-title" href="#">
+                                        <li class="sidebar-list"><i class="fa-solid fa-thumbtack"></i>
+                                            <a class="sidebar-link sidebar-title link-nav"
+                                                href="#">
                                                 <svg class="stroke-icon">
                                                     <use
-                                                        href="{{ asset('cuba/assets/svg/icon-sprite.svg#stroke-sitemap') }}">
+                                                        href="{{ asset('cuba/assets/svg/icon-sprite.svg#stroke-user') }}">
                                                     </use>
                                                 </svg>
                                                 <svg class="fill-icon">
                                                     <use
-                                                        href="{{ asset('cuba/assets/svg/icon-sprite.svg#fill-sitemap') }}">
+                                                        href="{{ asset('cuba/assets/svg/icon-sprite.svg#fill-user') }}">
                                                     </use>
-                                                </svg><span>Revisi SPP</span></a>
-                                            <ul class="sidebar-submenu">
-                                                <li>
-                                                    <a href="{{ route('spp-up.index') }}">UP (Uang Persediaan)
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="#">GU(Ganti Uang Persediaan)
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="#">TU (Tambahan Uang Persediaan)
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="#">LS (Langsung)
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="{{ route('spp-bj.index') }}">BJ (Barang Jasa)
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="#">LS (Langsung) Konstruksi
-                                                    </a>
-                                                </li>
-
-                                            </ul>
+                                                </svg><span>Akun Anda</span>
+                                            </a>
                                         </li>
+                                       
 
 
 
@@ -241,7 +247,7 @@
                                                     <use
                                                         href="{{ asset('cuba/assets/svg/icon-sprite.svg#fill-sitemap') }}">
                                                     </use>
-                                                </svg><span>Create SPM</span></a>
+                                                </svg><span>Buat SPM & Verif SPP</span></a>
                                             <ul class="sidebar-submenu">
                                                 <li>
                                                     <a href="#">UP (Uang Persediaan)

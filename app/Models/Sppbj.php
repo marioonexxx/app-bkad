@@ -10,7 +10,8 @@ class Sppbj extends Model
     use HasFactory;
     protected $table = 'sppbj';
     protected $fillable = [
-        'nomor',
+        'spp_nomor',
+        'spp_tgl',        
         'kontrak_nomor',
         'kontrak_tgl',
         'spmk_nomor',
@@ -20,10 +21,14 @@ class Sppbj extends Model
         'perusahaan_nama',
         'perusahaan_alamat',
         'perusahaan_bank',
+        'perusahaan_rekening',        
         'kontrak_nilai',
         'keterangan',
         'waktu_pelaksanaan',
         'tgl_penyelesaian',
+        'spm_nomor',
+        'spm_tgl',
+        'file_spp',
         'file_kontrak',
         'file_spmk',
         'file_sppbj',
@@ -31,11 +36,10 @@ class Sppbj extends Model
         'file_ba_pemeriksaan',
         'file_lap_kemajuan',
         'file_dokumentasi',
+        'file_spm',
+        'file_rekening',
         'status',
         'notes',
-        'spm_nomor',
-        'spm_tgl',
-        'file_spm',
         'opd_id',
     ];
 

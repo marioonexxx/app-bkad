@@ -28,7 +28,8 @@ class SppBjController extends Controller
     public function store(Request $request)
     {
         $validated = $request->validate([
-            'nomor' => 'required|string|max:255',
+            'spp_nomor' => 'required|string|max:255',
+            'spp_tgl' => 'required|date',
             'kontrak_nomor' => 'required|string|max:255',
             'kontrak_tgl' => 'required|date',
             'spmk_nomor' => 'nullable|string|max:255',
@@ -38,23 +39,33 @@ class SppBjController extends Controller
             'perusahaan_nama' => 'nullable|string|max:255',
             'perusahaan_alamat' => 'nullable|string|max:255',
             'perusahaan_bank' => 'nullable|string|max:255',
+            'perusahaan_rekening' => 'nullable|string|max:255',
             'kontrak_nilai' => 'nullable|numeric',
             'keterangan' => 'nullable|string',
             'waktu_pelaksanaan' => 'nullable|integer',
             'tgl_penyelesaian' => 'nullable|date',
 
+
             // file validations
+            'file_spp' => 'nullable|file|mimes:pdf|max:5120',
             'file_kontrak' => 'nullable|file|mimes:pdf|max:5120',
             'file_spmk' => 'nullable|file|mimes:pdf|max:5120',
             'file_sppbj' => 'nullable|file|mimes:pdf|max:5120',
             'file_bap' => 'nullable|file|mimes:pdf|max:5120',
             'file_ba_pemeriksaan' => 'nullable|file|mimes:pdf|max:5120',
             'file_lap_kemajuan' => 'nullable|file|mimes:pdf|max:5120',
-            'file_dokumentasi' => 'nullable|file|mimes:pdf|max:5120',         
+            'file_dokumentasi' => 'nullable|file|mimes:pdf|max:5120',
+            'file_spm' => 'nullable|file|mimes:pdf|max:5120',
+            'file_rekening' => 'nullable|file|mimes:pdf|max:5120',       
 
         ]);
 
         // Handle upload file satu-satu
+        
+        // Handle upload file satu-satu
+        if ($request->hasFile('file_spp')) {
+            $validated['file_spp'] = $request->file('file_spp')->store('sppbj', 'public');
+        }
         if ($request->hasFile('file_kontrak')) {
             $validated['file_kontrak'] = $request->file('file_kontrak')->store('sppbj', 'public');
         }
@@ -73,9 +84,13 @@ class SppBjController extends Controller
         if ($request->hasFile('file_lap_kemajuan')) {
             $validated['file_lap_kemajuan'] = $request->file('file_lap_kemajuan')->store('sppbj', 'public');
         }
-        if ($request->hasFile('file_dokumentasi')) {
-            $validated['file_dokumentasi'] = $request->file('file_dokumentasi')->store('sppbj', 'public');
+        if ($request->hasFile('file_spm')) {
+            $validated['file_spm'] = $request->file('file_spm')->store('sppbj', 'public');
         }
+        if ($request->hasFile('file_rekening')) {
+            $validated['file_rekening'] = $request->file('file_rekening')->store('sppbj', 'public');
+        }
+
 
         // Simpan opd_id dari user yang login
         $validated['opd_id'] = Auth::user()->opd_id;
@@ -89,7 +104,8 @@ class SppBjController extends Controller
     {
 
         $validated = $request->validate([
-            'nomor' => 'required|string|max:255',
+            'spp_nomor' => 'required|string|max:255',
+            'spp_tgl' => 'required|date',
             'kontrak_nomor' => 'required|string|max:255',
             'kontrak_tgl' => 'required|date',
             'spmk_nomor' => 'nullable|string|max:255',
@@ -99,6 +115,7 @@ class SppBjController extends Controller
             'perusahaan_nama' => 'nullable|string|max:255',
             'perusahaan_alamat' => 'nullable|string|max:255',
             'perusahaan_bank' => 'nullable|string|max:255',
+            'perusahaan_rekening' => 'nullable|string|max:255',
             'kontrak_nilai' => 'nullable|numeric',
             'keterangan' => 'nullable|string',
             'waktu_pelaksanaan' => 'nullable|integer',
@@ -106,6 +123,7 @@ class SppBjController extends Controller
 
 
             // file validations
+            'file_spp' => 'nullable|file|mimes:pdf|max:5120',
             'file_kontrak' => 'nullable|file|mimes:pdf|max:5120',
             'file_spmk' => 'nullable|file|mimes:pdf|max:5120',
             'file_sppbj' => 'nullable|file|mimes:pdf|max:5120',
@@ -113,12 +131,17 @@ class SppBjController extends Controller
             'file_ba_pemeriksaan' => 'nullable|file|mimes:pdf|max:5120',
             'file_lap_kemajuan' => 'nullable|file|mimes:pdf|max:5120',
             'file_dokumentasi' => 'nullable|file|mimes:pdf|max:5120',
+            'file_spm' => 'nullable|file|mimes:pdf|max:5120',
+            'file_rekening' => 'nullable|file|mimes:pdf|max:5120',
 
         ]);
 
         $sppbj = Sppbj::findOrFail($id);
 
         // Handle upload file satu-satu
+        if ($request->hasFile('file_spp')) {
+            $validated['file_spp'] = $request->file('file_spp')->store('sppbj', 'public');
+        }
         if ($request->hasFile('file_kontrak')) {
             $validated['file_kontrak'] = $request->file('file_kontrak')->store('sppbj', 'public');
         }
@@ -137,9 +160,13 @@ class SppBjController extends Controller
         if ($request->hasFile('file_lap_kemajuan')) {
             $validated['file_lap_kemajuan'] = $request->file('file_lap_kemajuan')->store('sppbj', 'public');
         }
-        if ($request->hasFile('file_dokumentasi')) {
-            $validated['file_dokumentasi'] = $request->file('file_dokumentasi')->store('sppbj', 'public');
+        if ($request->hasFile('file_spm')) {
+            $validated['file_spm'] = $request->file('file_spm')->store('sppbj', 'public');
         }
+        if ($request->hasFile('file_rekening')) {
+            $validated['file_rekening'] = $request->file('file_rekening')->store('sppbj', 'public');
+        }
+
 
         // Set status = 1
         $validated['status'] = 1;
@@ -188,14 +215,14 @@ class SppBjController extends Controller
     public function reject(Request $request, $id)
     {
         $request->validate([
-            'notes' => 'required|string|max:1000',
+            'notes' => 'required|string|max:1000',            
         ]);
 
         $sppbj = Sppbj::findOrFail($id);
 
         $sppbj->update([
             'status' => 5, // status 4 = ditolak
-            'notes' => $request->alasan
+            'notes' => $request->notes
         ]);
 
         return redirect()->back()->with('success', 'SPP berhasil ditolak.');
@@ -224,4 +251,6 @@ class SppBjController extends Controller
 
         return redirect()->back()->with('success', 'Data berhasil dibuat.');
     }
+
+    
 }

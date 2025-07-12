@@ -68,8 +68,7 @@
                         <div class="text-center">
                             <img src="{{ asset('bootslander/assets/img/bkad-logo/logo-kabupaten-mbd.png') }}"
                                 alt="Logo BPKAD MBD" style="max-height: 60px;" class="mb-2">
-                            <h4 class="fw-bold text-dark m-0">e-SPPM ( Sistem Pengarsipan Dokumen Elektronik <br>Surat
-                                Perintah Pembayaran dan Surat Perintah Membayar)</h4>
+                            <h1 class="fw-bold text-dark m-0">SISTEM INFORMASI DOKUMEN PENATAUSAHAAN SKPD<br>(SIKUPAS) </h1>
                             <span class="text-secondary">Badan Pengelola Keuangan dan Aset Daerah <br> Kabupaten Maluku
                                 Barat Daya</span>
                         </div>

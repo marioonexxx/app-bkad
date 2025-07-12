@@ -12,18 +12,19 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('sppbj', function (Blueprint $table) {
-            
-            $table->id();
-            $table->string('nomor')->nullable();
+            $table->id();            
+            $table->string('spp_nomor')->nullable();
+            $table->date('spp_tgl')->nullable();            
             $table->string('kontrak_nomor')->nullable();
             $table->date('kontrak_tgl')->nullable();
             $table->string('spmk_nomor')->nullable();
-            $table->date('spmk_tgl')->nullable();
+            $table->date('spmk_tgl')->nullable();            
             $table->string('sppbj_nomor')->nullable();
             $table->date('sppbj_tgl')->nullable();
             $table->string('perusahaan_nama')->nullable();
             $table->text('perusahaan_alamat')->nullable();
             $table->string('perusahaan_bank')->nullable();
+            $table->string('perusahaan_rekening')->nullable();           
             $table->decimal('kontrak_nilai', 20, 2)->nullable();
             $table->text('keterangan')->nullable();
             $table->integer('waktu_pelaksanaan')->nullable(); // dalam hari, asumsi
@@ -31,7 +32,9 @@ return new class extends Migration
             //SPM
             $table->string('spm_nomor')->nullable();
             $table->date('spm_tgl')->nullable();
-            // File uploads
+            
+            // File uploads            
+            $table->string('file_spp')->nullable();
             $table->string('file_kontrak')->nullable();
             $table->string('file_spmk')->nullable();
             $table->string('file_sppbj')->nullable();
@@ -40,11 +43,14 @@ return new class extends Migration
             $table->string('file_lap_kemajuan')->nullable();
             $table->string('file_dokumentasi')->nullable();
             $table->string('file_spm')->nullable();
-            $table->string('status')->nullable(); // status proses
-            $table->string('notes')->nullable(); // untuk catatan revisi            
-            $table->timestamps();
-            $table->foreignId('opd_id')->nullable()->constrained('opd')->onDelete('set null');
+            $table->string('file_rekening')->nullable();
 
+            //  Revisi
+            $table->string('status')->nullable()->comment('1 = Verifikasi PPK 2 = Verifikator BKAD 3 = Verifikasi Kuasa BUD 4 = SP2D Terbit 5 = Revisi Usulan'); // status proses
+            $table->string('notes')->nullable(); // untuk catatan revisi          
+            
+            $table->foreignId('opd_id')->nullable()->constrained('opd')->onDelete('set null');
+            $table->timestamps();
         });
     }
 

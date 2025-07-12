@@ -31,30 +31,17 @@
                             {{-- Bagian kiri: Judul dan ikon --}}
                             <div class="d-flex align-items-center gap-3 flex-grow-1">
                                 <h5 class="mb-0">Tabel Surat Permintaan Pembayaran - Barang Jasa</h5>
-                                {{-- <div class="card-header-right ms-auto">
-                                    <ul class="list-unstyled card-option d-flex mb-0 gap-2">
-                                        <li><i class="fa-solid fa-gear fa-spin"></i></li>
-                                        <li><i class="view-html fa-solid fa-code"></i></li>
-                                        <li><i class="icofont icofont-maximize full-card"></i></li>
-                                        <li><i class="icofont icofont-minus minimize-card"></i></li>
-                                        <li><i class="icofont icofont-refresh reload-card"></i></li>
-                                        <li><i class="icofont icofont-error close-card"></i></li>
-                                    </ul>
-                                </div> --}}
                             </div>
-
-
                         </div>
-
-
                         <div class="card-body">
                             <div class="table-responsive custom-scrollbar">
                                 <table class="display table-striped border" id="dataTable">
                                     <thead>
                                         <tr>
-                                            <th>#</th>
+                                            <th>No</th>
                                             <th>Status</th>
                                             <th>No SPP</th>
+                                            <th>Tgl SPP</th>
                                             <th>No Kontrak</th>
                                             <th>Tgl Kontrak</th>
                                             <th>No SPMK</th>
@@ -62,24 +49,17 @@
                                             <th>No SPPBJ</th>
                                             <th>Tgl SPPBJ</th>
                                             <th>Nama Perusahaan</th>
-                                            {{-- <th>Alamat</th> --}}
-                                            {{-- <th>Nama Bank</th> --}}
+                                            <th>Alamat</th>
+                                            <th>Nama Bank</th>
+                                            <th>Rekening Bank</th>
                                             <th>Nilai Kontrak</th>
-                                            {{-- <th>Keterangan</th> --}}
-                                            {{-- <th>Waktu Pelaksanaan</th> --}}
+                                            <th>Keterangan</th>
+                                            <th>Waktu Pelaksanaan</th>
                                             <th>Tanggal Penyelesaian</th>
-                                            {{-- <th>File Kontrak</th>
-                                            <th>File SPMK</th>
-                                            <th>File SPPBJ</th>
-                                            <th>File BAP</th>
-                                            <th>File BA-Pemeriksaan</th>
-                                            <th>File Lap. Kemajuan</th>
-                                            <th>File Dokumentasi</th> --}}
                                             <th>Action</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-
                                         @foreach ($data as $index => $item)
                                             <tr>
                                                 <td>{{ $index + 1 }}</td>
@@ -107,7 +87,8 @@
                                                     @endswitch
                                                 </td>
 
-                                                <td>{{ $item->nomor }}</td>
+                                                <td>{{ $item->spp_nomor }}</td>
+                                                <td>{{ $item->spp_tgl }}</td>
                                                 <td>{{ $item->kontrak_nomor }}</td>
                                                 <td>{{ \Carbon\Carbon::parse($item->kontrak_tgl)->translatedFormat('d F Y') }}
                                                 </td>
@@ -121,97 +102,16 @@
                                                 </td>
 
                                                 <td>{{ $item->perusahaan_nama }}</td>
-                                                {{-- <td>{{ $item->perusahaan_alamat }}</td> --}}
-                                                {{-- <td>{{ $item->perusahaan_bank }}</td> --}}
+                                                <td>{{ $item->perusahaan_alamat }}</td>
+                                                <td>{{ $item->perusahaan_bank }}</td>
+                                                <td>{{ $item->perusahaan_rekening }}</td>
                                                 <td>Rp {{ number_format($item->kontrak_nilai, 0, ',', '.') }}</td>
 
-                                                {{-- <td>{{ $item->keterangan }}</td> --}}
-                                                {{-- <td>{{ $item->waktu_pelaksanaan }}</td> --}}
+                                                <td>{{ $item->keterangan }}</td>
+                                                <td>{{ $item->waktu_pelaksanaan }}</td>
                                                 <td>{{ \Carbon\Carbon::parse($item->tgl_penyelesaian)->translatedFormat('d F Y') }}
                                                 </td>
 
-                                                {{-- File Kontrak --}}
-                                                {{-- <td>
-                                                    @if ($item->file_kontrak)
-                                                        <a href="{{ asset('storage/' . $item->file_kontrak) }}"
-                                                            target="_blank">
-                                                            <i class="fa-solid fa-file-pdf text-danger fa-lg"></i>
-                                                        </a>
-                                                    @else
-                                                        <span class="text-muted">-</span>
-                                                    @endif
-                                                </td> --}}
-                                                <!-- File SPMK -->
-                                                {{-- <td>
-                                                    @if ($item->file_spmk)
-                                                        <a href="{{ asset('storage/' . $item->file_spmk) }}"
-                                                            target="_blank">
-                                                            <i class="fa-solid fa-file-pdf text-danger fa-lg"></i>
-                                                        </a>
-                                                    @else
-                                                        <span class="text-muted">-</span>
-                                                    @endif
-                                                </td> --}}
-
-                                                <!-- File SPPBJ -->
-                                                {{-- <td>
-                                                    @if ($item->file_sppbj)
-                                                        <a href="{{ asset('storage/' . $item->file_sppbj) }}"
-                                                            target="_blank">
-                                                            <i class="fa-solid fa-file-pdf text-danger fa-lg"></i>
-                                                        </a>
-                                                    @else
-                                                        <span class="text-muted">-</span>
-                                                    @endif
-                                                </td> --}}
-
-                                                <!-- File BAP -->
-                                                {{-- <td>
-                                                    @if ($item->file_bap)
-                                                        <a href="{{ asset('storage/' . $item->file_bap) }}"
-                                                            target="_blank">
-                                                            <i class="fa-solid fa-file-pdf text-danger fa-lg"></i>
-                                                        </a>
-                                                    @else
-                                                        <span class="text-muted">-</span>
-                                                    @endif
-                                                </td> --}}
-
-                                                <!-- File BA Pemeriksaan -->
-                                                {{-- <td>
-                                                    @if ($item->file_ba_pemeriksaan)
-                                                        <a href="{{ asset('storage/' . $item->file_ba_pemeriksaan) }}"
-                                                            target="_blank">
-                                                            <i class="fa-solid fa-file-pdf text-danger fa-lg"></i>
-                                                        </a>
-                                                    @else
-                                                        <span class="text-muted">-</span>
-                                                    @endif
-                                                </td> --}}
-
-                                                <!-- File Laporan Kemajuan -->
-                                                {{-- <td>
-                                                    @if ($item->file_lap_kemajuan)
-                                                        <a href="{{ asset('storage/' . $item->file_lap_kemajuan) }}"
-                                                            target="_blank">
-                                                            <i class="fa-solid fa-file-pdf text-danger fa-lg"></i>
-                                                        </a>
-                                                    @else
-                                                        <span class="text-muted">-</span>
-                                                    @endif
-                                                </td> --}}
-
-                                                <!-- File Dokumentasi -->
-                                                {{-- <td>
-                                                    @if ($item->file_dokumentasi)
-                                                        <a href="{{ asset('storage/' . $item->file_dokumentasi) }}"
-                                                            target="_blank">
-                                                            <i class="fa-solid fa-file-pdf text-danger fa-lg"></i>
-                                                        </a>
-                                                    @else
-                                                        <span class="text-muted">-</span>
-                                                    @endif
-                                                </td> --}}
                                                 <td>
                                                     <div class="d-flex gap-2">
                                                         {{-- Tombol Info --}}
@@ -221,7 +121,7 @@
                                                             <i class="fa-solid fa-circle-info"></i>
                                                         </button>
 
-                                                        
+
 
                                                         <!-- Tombol Create SPM -->
                                                         <button type="button" class="btn btn-sm btn-warning"
@@ -242,187 +142,6 @@
                                                 </td>
                                             </tr>
 
-                                            <!-- Modal Info -->
-                                            <div class="modal fade" id="infoModal{{ $item->id }}" tabindex="-1"
-                                                aria-labelledby="infoModalLabel{{ $item->id }}" aria-hidden="true">
-                                                <div class="modal-dialog modal-xl modal-dialog-scrollable">
-                                                    <div class="modal-content">
-                                                        <div class="modal-header text-dark">
-                                                            <h5 class="modal-title" id="infoModalLabel{{ $item->id }}">
-                                                                Detail Data</h5>
-                                                            <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                                                aria-label="Tutup"></button>
-                                                        </div>
-                                                        <div class="modal-body">
-                                                            <div class="row g-3">
-
-                                                                <div class="col-md-6"><strong>Status:</strong><br>
-                                                                    @switch($item->status)
-                                                                        @case(1)
-                                                                            Verifikasi PPK
-                                                                        @break
-
-                                                                        @case(2)
-                                                                            Verifikasi Verifikator BKAD
-                                                                        @break
-
-                                                                        @case(3)
-                                                                            Verifikasi Kuasa BUD
-                                                                        @break
-
-                                                                        @case(4)
-                                                                            SPD2 Terbit
-                                                                        @break
-
-                                                                        @case(5)
-                                                                            Revisi Usulan
-                                                                        @break
-
-                                                                        @default
-                                                                            Belum Diverifikasi
-                                                                    @endswitch
-                                                                </div>
-
-                                                                <div class="col-md-6"><strong>No
-                                                                        SPP:</strong><br>{{ $item->nomor }}</div>
-                                                                <div class="col-md-6"><strong>No
-                                                                        Kontrak:</strong><br>{{ $item->kontrak_nomor }}
-                                                                </div>
-                                                                <div class="col-md-6"><strong>Tgl
-                                                                        Kontrak:</strong><br>{{ \Carbon\Carbon::parse($item->kontrak_tgl)->translatedFormat('d F Y') }}
-                                                                </div>
-                                                                <div class="col-md-6"><strong>No
-                                                                        SPMK:</strong><br>{{ $item->spmk_nomor }}
-                                                                </div>
-                                                                <div class="col-md-6"><strong>Tgl
-                                                                        SPMK:</strong><br>{{ \Carbon\Carbon::parse($item->spmk_tgl)->translatedFormat('d F Y') }}
-                                                                </div>
-                                                                <div class="col-md-6"><strong>No
-                                                                        SPPBJ:</strong><br>{{ $item->sppbj_nomor }}
-                                                                </div>
-                                                                <div class="col-md-6"><strong>Tgl
-                                                                        SPPBJ:</strong><br>{{ \Carbon\Carbon::parse($item->sppbj_tgl)->translatedFormat('d F Y') }}
-                                                                </div>
-                                                                <div class="col-md-6"><strong>Nama
-                                                                        Perusahaan:</strong><br>{{ $item->perusahaan_nama }}
-                                                                </div>
-                                                                <div class="col-md-6">
-                                                                    <strong>Alamat:</strong><br>{{ $item->perusahaan_alamat }}
-                                                                </div>
-                                                                <div class="col-md-6"><strong>Nama
-                                                                        Bank:</strong><br>{{ $item->perusahaan_bank }}
-                                                                </div>
-                                                                <div class="col-md-6"><strong>Nilai
-                                                                        Kontrak:</strong><br>Rp{{ number_format($item->kontrak_nilai, 0, ',', '.') }}
-                                                                </div>
-                                                                <div class="col-md-6">
-                                                                    <strong>Keterangan:</strong><br>{{ $item->keterangan }}
-                                                                </div>
-                                                                <div class="col-md-6"><strong>Waktu
-                                                                        Pelaksanaan:</strong><br>{{ $item->waktu_pelaksanaan }}
-                                                                    hari</div>
-                                                                <div class="col-md-6"><strong>Tgl
-                                                                        Penyelesaian:</strong><br>{{ \Carbon\Carbon::parse($item->tgl_penyelesaian)->translatedFormat('d F Y') }}
-                                                                </div>
-
-                                                                {{-- File-file --}}
-                                                                @php
-                                                                    $files = [
-                                                                        'file_kontrak' => 'File Kontrak',
-                                                                        'file_spmk' => 'File SPMK',
-                                                                        'file_sppbj' => 'File SPPBJ',
-                                                                        'file_bap' => 'File BAP',
-                                                                        'file_ba_pemeriksaan' => 'File BA Pemeriksaan',
-                                                                        'file_lap_kemajuan' => 'File Laporan Kemajuan',
-                                                                        'file_dokumentasi' => 'File Dokumentasi',
-                                                                    ];
-                                                                @endphp
-
-                                                                @foreach ($files as $key => $label)
-                                                                    <div class="col-md-6">
-                                                                        <strong>{{ $label }}:</strong><br>
-                                                                        @if ($item->$key)
-                                                                            <a href="{{ asset('storage/' . $item->$key) }}"
-                                                                                target="_blank">
-                                                                                <i
-                                                                                    class="fa-solid fa-file-pdf text-danger"></i>
-                                                                                Lihat Dokumen
-                                                                            </a>
-                                                                        @else
-                                                                            <span class="text-muted">Tidak ada</span>
-                                                                        @endif
-                                                                    </div>
-                                                                @endforeach
-
-                                                            </div>
-                                                        </div>
-                                                        <div class="modal-footer">
-                                                            <button type="button" class="btn btn-secondary"
-                                                                data-bs-dismiss="modal">Tutup</button>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            {{-- CREATE SPM --}}
-                                            @foreach ($data as $item)
-                                                <div class="modal fade" id="createSpmModal{{ $item->id }}"
-                                                    tabindex="-1" aria-labelledby="spmModalLabel{{ $item->id }}"
-                                                    aria-hidden="true">
-                                                    <div class="modal-dialog modal-dialog-scrollable modal-xl">
-
-                                                        <form action="{{ route('ppk.spp-bj.create_spm', $item->id) }}"
-                                                            method="POST" enctype="multipart/form-data">
-                                                            @csrf
-                                                            @method('PUT') <!-- WAJIB agar form bisa akses route PUT -->
-
-                                                            <input type="hidden" name="spp_id"
-                                                                value="{{ $item->id }}">
-
-                                                            <div class="modal-content">
-                                                                <div class="modal-header">
-                                                                    <h5 class="modal-title"
-                                                                        id="spmModalLabel{{ $item->id }}">Buat SPM -
-                                                                        {{ $item->nomor }}</h5>
-                                                                    <button type="button" class="btn-close"
-                                                                        data-bs-dismiss="modal"
-                                                                        aria-label="Tutup"></button>
-                                                                </div>
-
-                                                                <div class="modal-body row">
-                                                                    <div class="col-md-6 mb-3">
-                                                                        <label class="form-label">Nomor SPM</label>
-                                                                        <input type="text" class="form-control"
-                                                                            name="spm_nomor" required>
-                                                                    </div>
-
-                                                                    <div class="col-md-6 mb-3">
-                                                                        <label class="form-label">Tanggal SPM</label>
-                                                                        <input type="date" class="form-control"
-                                                                            name="spm_tgl" required>
-                                                                    </div>
-
-                                                                    <div class="col-md-12 mb-3">
-                                                                        <label class="form-label">Upload SPM (PDF)</label>
-                                                                        <input type="file" class="form-control"
-                                                                            name="file_spm" accept="application/pdf"
-                                                                            required>
-                                                                    </div>
-                                                                </div>
-
-                                                                <div class="modal-footer">
-                                                                    <button type="submit" class="btn btn-success">
-                                                                        <i class="fa-solid fa-paper-plane me-1"></i> Simpan
-                                                                    </button>
-                                                                    <button type="button" class="btn btn-secondary"
-                                                                        data-bs-dismiss="modal">Batal</button>
-                                                                </div>
-                                                            </div>
-                                                        </form>
-                                                    </div>
-                                                </div>
-                                            @endforeach
-
 
                                             {{-- Modal Tolak SPP - Khusus untuk $item --}}
                                             <div class="modal fade" id="tolakModal{{ $item->id }}" tabindex="-1"
@@ -431,8 +150,7 @@
                                                     <form action="{{ route('ppk.spp-bj.reject', $item->id) }}"
                                                         method="POST">
                                                         @csrf
-                                                        <input type="hidden" name="spp_id"
-                                                            value="{{ $item->id }}">
+                                                        <input type="hidden" name="spp_id" value="{{ $item->id }}">
                                                         <div class="modal-content">
                                                             <div class="modal-header">
                                                                 <h5 class="modal-title"
@@ -464,6 +182,200 @@
 
                                     </tbody>
                                 </table>
+
+                                {{-- CREATE SPM --}}
+                                @foreach ($data as $item)
+                                    <div class="modal fade" id="createSpmModal{{ $item->id }}" tabindex="-1"
+                                        aria-labelledby="spmModalLabel{{ $item->id }}" aria-hidden="true">
+                                        <div class="modal-dialog modal-dialog-scrollable modal-xl">
+
+                                            <form action="{{ route('ppk.spp-bj.create_spm', $item->id) }}" method="POST"
+                                                enctype="multipart/form-data">
+                                                @csrf
+                                                @method('PUT') <!-- WAJIB agar form bisa akses route PUT -->
+
+                                                <input type="hidden" name="spp_id" value="{{ $item->id }}">
+
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title" id="spmModalLabel{{ $item->id }}">Buat
+                                                            SPM -
+                                                            {{ $item->nomor }}</h5>
+                                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                            aria-label="Tutup"></button>
+                                                    </div>
+
+                                                    <div class="modal-body row">
+                                                        <div class="col-md-6 mb-3">
+                                                            <label class="form-label">Nomor SPM</label>
+                                                            <input type="text" class="form-control" name="spm_nomor"
+                                                                required>
+                                                        </div>
+
+                                                        <div class="col-md-6 mb-3">
+                                                            <label class="form-label">Tanggal SPM</label>
+                                                            <input type="date" class="form-control" name="spm_tgl"
+                                                                required>
+                                                        </div>
+
+                                                        <div class="col-md-12 mb-3">
+                                                            <label class="form-label">Upload SPM (PDF)</label>
+                                                            <input type="file" class="form-control" name="file_spm"
+                                                                accept="application/pdf" required>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="modal-footer">
+                                                        <button type="submit" class="btn btn-success">
+                                                            <i class="fa-solid fa-paper-plane me-1"></i> Simpan
+                                                        </button>
+                                                        <button type="button" class="btn btn-secondary"
+                                                            data-bs-dismiss="modal">Batal</button>
+                                                    </div>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                @endforeach
+
+                              
+                                <!-- Modal Info -->
+                                @foreach ($data as $item)
+                                    <div class="modal fade" id="infoModal{{ $item->id }}" tabindex="-1"
+                                        aria-labelledby="infoModalLabel{{ $item->id }}" aria-hidden="true">
+                                        <div class="modal-dialog modal-xl modal-dialog-scrollable">
+                                            <div class="modal-content">
+                                                <div class="modal-header text-dark">
+                                                    <h5 class="modal-title" id="infoModalLabel{{ $item->id }}">Detail
+                                                        Data</h5>
+                                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                        aria-label="Tutup"></button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <div class="row g-3">
+
+                                                        <div class="col-md-6">
+                                                            <strong>Status:</strong><br>
+                                                            @switch($item->status)
+                                                                @case(1)
+                                                                    <span class="badge bg-info">Verifikasi PPK</span>
+                                                                @break
+
+                                                                @case(2)
+                                                                    <span class="badge bg-primary">Verifikasi Verifikator
+                                                                        BKAD</span>
+                                                                @break
+
+                                                                @case(3)
+                                                                    <span class="badge bg-warning text-dark">Verifikasi Kuasa
+                                                                        BUD</span>
+                                                                @break
+
+                                                                @case(4)
+                                                                    <span class="badge bg-success">SPD2 Terbit</span>
+                                                                @break
+
+                                                                @case(5)
+                                                                    <span class="badge bg-danger">Revisi Usulan</span><br>
+                                                                    <strong class="text-danger">Catatan Revisi:</strong><br>
+                                                                    <span class="text-muted">{{ $item->notes }}</span>
+                                                                @break
+
+                                                                @default
+                                                                    <span class="badge bg-secondary">Belum Diverifikasi</span>
+                                                            @endswitch
+                                                        </div>
+
+
+                                                        <div class="col-md-6"><strong>No
+                                                                SPP:</strong><br>{{ $item->spp_nomor }}
+                                                        </div>
+                                                        <div class="col-md-6"><strong>Tgl
+                                                                SPP:</strong><br>{{ $item->spp_tgl }}
+                                                        </div>
+                                                        <div class="col-md-6"><strong>No
+                                                                Kontrak:</strong><br>{{ $item->kontrak_nomor }}</div>
+                                                        <div class="col-md-6"><strong>Tgl
+                                                                Kontrak:</strong><br>{{ \Carbon\Carbon::parse($item->kontrak_tgl)->translatedFormat('d F Y') }}
+                                                        </div>
+                                                        <div class="col-md-6"><strong>No
+                                                                SPMK:</strong><br>{{ $item->spmk_nomor }}
+                                                        </div>
+                                                        <div class="col-md-6"><strong>Tgl
+                                                                SPMK:</strong><br>{{ \Carbon\Carbon::parse($item->spmk_tgl)->translatedFormat('d F Y') }}
+                                                        </div>
+                                                        <div class="col-md-6"><strong>No
+                                                                SPPBJ:</strong><br>{{ $item->sppbj_nomor }}
+                                                        </div>
+                                                        <div class="col-md-6"><strong>Tgl
+                                                                SPPBJ:</strong><br>{{ \Carbon\Carbon::parse($item->sppbj_tgl)->translatedFormat('d F Y') }}
+                                                        </div>
+                                                        <div class="col-md-6"><strong>Nama
+                                                                Perusahaan:</strong><br>{{ $item->perusahaan_nama }}</div>
+                                                        <div class="col-md-6">
+                                                            <strong>Alamat:</strong><br>{{ $item->perusahaan_alamat }}
+                                                        </div>
+                                                        <div class="col-md-6"><strong>Nama
+                                                                Bank:</strong><br>{{ $item->perusahaan_bank }}</div>
+                                                        <div class="col-md-6"><strong>Rekening
+                                                                Bank:</strong><br>{{ $item->perusahaan_rekening }}</div>
+                                                        <div class="col-md-6"><strong>Nilai
+                                                                Kontrak:</strong><br>Rp{{ number_format($item->kontrak_nilai, 0, ',', '.') }}
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                            <strong>Keterangan:</strong><br>{{ $item->keterangan }}
+                                                        </div>
+                                                        <div class="col-md-6"><strong>Waktu
+                                                                Pelaksanaan:</strong><br>{{ $item->waktu_pelaksanaan }}
+                                                            hari</div>
+                                                        <div class="col-md-6"><strong>Tgl
+                                                                Penyelesaian:</strong><br>{{ \Carbon\Carbon::parse($item->tgl_penyelesaian)->translatedFormat('d F Y') }}
+                                                        </div>
+
+                                                        {{-- File-file --}}
+                                                        @php
+                                                            $files = [
+                                                                'file_spp' => 'File SPP',
+                                                                'file_kontrak' => 'File Kontrak',
+                                                                'file_spmk' => 'File SPMK',
+                                                                'file_sppbj' => 'File SPPBJ',
+                                                                'file_bap' => 'File BAP',
+                                                                'file_ba_pemeriksaan' => 'File BA Pemeriksaan',
+                                                                'file_lap_kemajuan' => 'File Laporan Kemajuan',
+                                                                'file_dokumentasi' => 'File Dokumentasi',
+                                                                'file_rekening' => 'File Rekening Koran',
+                                                            ];
+                                                        @endphp
+
+                                                        @foreach ($files as $key => $label)
+                                                            <div class="col-md-6">
+                                                                <strong>{{ $label }}:</strong><br>
+                                                                @if ($item->$key)
+                                                                    <a href="{{ asset('storage/' . $item->$key) }}"
+                                                                        target="_blank">
+                                                                        <i class="fa-solid fa-file-pdf text-danger"></i>
+                                                                        Lihat
+                                                                        Dokumen
+                                                                    </a>
+                                                                @else
+                                                                    <span class="text-muted">Tidak ada</span>
+                                                                @endif
+                                                            </div>
+                                                        @endforeach
+
+                                                    </div>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary"
+                                                        data-bs-dismiss="modal">Tutup</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                @endforeach
+
+
+
                             </div>
 
                             <div class="code-box-copy">

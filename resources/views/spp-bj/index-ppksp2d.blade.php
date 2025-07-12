@@ -43,7 +43,7 @@
                                 </div> --}}
                             </div>
 
-                            
+
                         </div>
 
 
@@ -72,13 +72,13 @@
                                             {{-- <th>Keterangan</th> --}}
                                             {{-- <th>Waktu Pelaksanaan</th> --}}
                                             {{-- <th>Tanggal Penyelesaian</th> --}}
-                                            <th>File Kontrak</th>
+                                            {{-- <th>File Kontrak</th>
                                             <th>File SPMK</th>
                                             <th>File SPPBJ</th>
                                             <th>File BAP</th>
                                             <th>File BA-Pemeriksaan</th>
                                             <th>File Lap. Kemajuan</th>
-                                            <th>File Dokumentasi</th>
+                                            <th>File Dokumentasi</th> --}}
                                             <th>Action</th>
                                         </tr>
                                     </thead>
@@ -94,7 +94,8 @@
                                                         @break
 
                                                         @case(2)
-                                                            <span class="badge bg-success">SPM Telah Dibuat - <br> Menunggu Upload Resume</span>
+                                                            <span class="badge bg-success">SPM Telah Dibuat - <br> Menunggu Upload
+                                                                Resume</span>
                                                         @break
 
                                                         @case(3)
@@ -108,26 +109,32 @@
                                                         @default
                                                             <span class="badge bg-secondary">Belum Diverifikasi</span>
                                                     @endswitch
-                                                </td>                                               
-                                                <td>
-                                                     {{-- Tombol Print Resume --}}
-                                                        <button type="button" class="btn btn-sm btn-primary">
-                                                            <i class="fa-solid fa-print"></i>
-                                                        </button>
                                                 </td>
-                                                <td>{{ $item->spm_nomor }}</td>                                                
+                                                <td>
+                                                    {{-- PRINT RESUME --}}
+                                                    <a href="{{ route('ppk.print_resume', $item->id) }}" target="_blank"
+                                                        class="btn btn-sm btn-primary">
+                                                        <i class="fa-solid fa-print"></i> Print
+                                                    </a>
+                                                    {{-- UPLOAD RESUME --}}
+                                                    <a href="{{ route('ppk.print_resume', $item->id) }}" target="_blank"
+                                                        class="btn btn-sm btn-primary">
+                                                        <i class="fa-solid fa-upload"></i> Upload
+                                                    </a>
+
+                                                </td>
+                                                <td>{{ $item->spm_nomor }}</td>
                                                 <td>{{ $item->spm_tgl }}</td>
                                                 <td>
                                                     @if ($item->file_spm)
-                                                        <a href="{{ asset('storage/' . $item->file_spm) }}"
-                                                            target="_blank">
+                                                        <a href="{{ asset('storage/' . $item->file_spm) }}" target="_blank">
                                                             <i class="fa-solid fa-file-pdf text-danger fa-lg"></i>
                                                         </a>
                                                     @else
                                                         <span class="text-muted">-</span>
                                                     @endif
                                                 </td>
-                                                <td>{{ $item->nomor }}</td>
+                                                <td>{{ $item->spp_nomor }}</td>
                                                 <td>{{ $item->kontrak_nomor }}</td>
                                                 <td>{{ \Carbon\Carbon::parse($item->kontrak_tgl)->translatedFormat('d F Y') }}
                                                 </td>
@@ -150,88 +157,6 @@
                                                 {{-- <td>{{ \Carbon\Carbon::parse($item->tgl_penyelesaian)->translatedFormat('d F Y') }} --}}
                                                 </td>
 
-                                                {{-- File Kontrak --}}
-                                                <td>
-                                                    @if ($item->file_kontrak)
-                                                        <a href="{{ asset('storage/' . $item->file_kontrak) }}"
-                                                            target="_blank">
-                                                            <i class="fa-solid fa-file-pdf text-danger fa-lg"></i>
-                                                        </a>
-                                                    @else
-                                                        <span class="text-muted">-</span>
-                                                    @endif
-                                                </td>
-                                                <!-- File SPMK -->
-                                                <td>
-                                                    @if ($item->file_spmk)
-                                                        <a href="{{ asset('storage/' . $item->file_spmk) }}"
-                                                            target="_blank">
-                                                            <i class="fa-solid fa-file-pdf text-danger fa-lg"></i>
-                                                        </a>
-                                                    @else
-                                                        <span class="text-muted">-</span>
-                                                    @endif
-                                                </td>
-
-                                                <!-- File SPPBJ -->
-                                                <td>
-                                                    @if ($item->file_sppbj)
-                                                        <a href="{{ asset('storage/' . $item->file_sppbj) }}"
-                                                            target="_blank">
-                                                            <i class="fa-solid fa-file-pdf text-danger fa-lg"></i>
-                                                        </a>
-                                                    @else
-                                                        <span class="text-muted">-</span>
-                                                    @endif
-                                                </td>
-
-                                                <!-- File BAP -->
-                                                <td>
-                                                    @if ($item->file_bap)
-                                                        <a href="{{ asset('storage/' . $item->file_bap) }}"
-                                                            target="_blank">
-                                                            <i class="fa-solid fa-file-pdf text-danger fa-lg"></i>
-                                                        </a>
-                                                    @else
-                                                        <span class="text-muted">-</span>
-                                                    @endif
-                                                </td>
-
-                                                <!-- File BA Pemeriksaan -->
-                                                <td>
-                                                    @if ($item->file_ba_pemeriksaan)
-                                                        <a href="{{ asset('storage/' . $item->file_ba_pemeriksaan) }}"
-                                                            target="_blank">
-                                                            <i class="fa-solid fa-file-pdf text-danger fa-lg"></i>
-                                                        </a>
-                                                    @else
-                                                        <span class="text-muted">-</span>
-                                                    @endif
-                                                </td>
-
-                                                <!-- File Laporan Kemajuan -->
-                                                <td>
-                                                    @if ($item->file_lap_kemajuan)
-                                                        <a href="{{ asset('storage/' . $item->file_lap_kemajuan) }}"
-                                                            target="_blank">
-                                                            <i class="fa-solid fa-file-pdf text-danger fa-lg"></i>
-                                                        </a>
-                                                    @else
-                                                        <span class="text-muted">-</span>
-                                                    @endif
-                                                </td>
-
-                                                <!-- File Dokumentasi -->
-                                                <td>
-                                                    @if ($item->file_dokumentasi)
-                                                        <a href="{{ asset('storage/' . $item->file_dokumentasi) }}"
-                                                            target="_blank">
-                                                            <i class="fa-solid fa-file-pdf text-danger fa-lg"></i>
-                                                        </a>
-                                                    @else
-                                                        <span class="text-muted">-</span>
-                                                    @endif
-                                                </td>
                                                 <td>
                                                     <div class="d-flex gap-2">
 
@@ -242,9 +167,10 @@
                                                         </span>
                                                         <span class="badge rounded-pill bg-success text-white"
                                                             style="cursor:pointer;">
-                                                            <i class="fa-solid fa-paper-plane me-1"></i> Proses Pengajuan SP2D
+                                                            <i class="fa-solid fa-paper-plane me-1"></i> Proses Pengajuan
+                                                            SP2D
                                                         </span>
-                                                        
+
                                                     </div>
                                                 </td>
                                             </tr>
